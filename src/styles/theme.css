@@ -1,0 +1,44 @@
+:root { --surface: #fff; color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #192b36;
+  --paper: #101d26;
+  --paper-2: #203440;
+  --line: #3c5362;
+  --line-2: #617887;
+  --ink: #edf4f7;
+  --ink-2: #c8d8e1;
+  --ink-3: #acbfcb;
+  --petrol: #83d4df;
+  --petrol-2: #a2e5ec;
+  --petrol-soft: #193e49;
+  --slate: #b0c5d4;
+  --sound: #efb94e;
+  --sound-soft: #423719;
+  --ok: #8ad9b3;
+  --ok-soft: #183e32;
+  --warn: #f3ba81;
+  --warn-soft: #453020;
+  --insp: #77c7f3;
+  --insp-soft: #1c3b50;
+  --exp: #b0bfd4;
+  --exp-soft: #2c394c;
+  --cont: #c2a5f5;
+  --cont-soft: #35294d;
+  --desc: #f2aa87;
+  --desc-soft: #4b2d24;
+  --shadow: 0 8px 24px #0005;
+}
+[data-theme="dark"] .btn.primary,
+[data-theme="dark"] .btn.seg[aria-pressed="true"],
+[data-theme="dark"] .sd-tab tr.on .sd-name { color: #10212b; }
+[data-theme="dark"] .tag.esq { color: #efc66f; }
+.theme-toggle { font-size: 23px; }
+[data-theme="dark"] .cr-sbg,
+[data-theme="dark"] .cr-bands .b-pau,
+[data-theme="dark"] .sc-win { fill: var(--surface); }
+[data-theme="dark"] .sf-ref text { fill: #0e5462; }
+@media (max-width: 420px) {
+  body.modo-estudo .ab-brand { display: none; }
+  body.modo-estudo .appbar { justify-content: center; padding-inline: 4px; }
+}

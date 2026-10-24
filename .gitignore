@@ -1,0 +1,8 @@
+node_modules/
+dist/
+dist-offline/
+sandbox/out/
+.DS_Store
+evidencias/
+sandbox/out/
+/tools/clips.py

@@ -1,0 +1,512 @@
+[
+  {
+    "id": "normal-1",
+    "arquivo": "normal-1.wav",
+    "classe": "Murmúrio vesicular",
+    "rotulo_original": "Normal",
+    "uso": "principal",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2023/test2023_wav",
+      "sha256_original": "70b626e6a3b031e9d2432b9bf7bd876cf55d71b1cd4a877c5243baee60430f97",
+      "rotulo_do_registro": "Normal",
+      "ponto": "posterior direito",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      0.8,
+      6.3
+    ],
+    "duracao_s": 5.5,
+    "eventos": [
+      {
+        "inicio": 0.034,
+        "fim": 1.938,
+        "rotulo": "Normal"
+      },
+      {
+        "inicio": 2.042,
+        "fim": 3.681,
+        "rotulo": "Normal"
+      },
+      {
+        "inicio": 3.84,
+        "fim": 5.495,
+        "rotulo": "Normal"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +16.7 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": "Metadados de paciente omitidos na distribuição pública."
+  },
+  {
+    "id": "normal-2",
+    "arquivo": "normal-2.wav",
+    "classe": "Murmúrio vesicular",
+    "rotulo_original": "Normal",
+    "uso": "alternativo",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2023/test2023_wav",
+      "sha256_original": "d739161f3c2f4a238e723dd3e14e8250d765dfafff6a31f3f145c675eb6258e8",
+      "rotulo_do_registro": "Normal",
+      "ponto": "posterior direito",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      0.1,
+      8.8
+    ],
+    "duracao_s": 8.7,
+    "eventos": [
+      {
+        "inicio": 0.0,
+        "fim": 2.285,
+        "rotulo": "Normal"
+      },
+      {
+        "inicio": 2.457,
+        "fim": 5.386,
+        "rotulo": "Normal"
+      },
+      {
+        "inicio": 6.058,
+        "fim": 8.7,
+        "rotulo": "Normal"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +23.9 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": "Sinal original fraco; ganho aplicado."
+  },
+  {
+    "id": "sibilo-1",
+    "arquivo": "sibilo-1.wav",
+    "classe": "Sibilos",
+    "rotulo_original": "Wheeze",
+    "uso": "principal",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2022/train2022_wav",
+      "sha256_original": "965dc3d5330c17e6861f08803bd75887e4a4a889886abb5da7230099c4177ef5",
+      "rotulo_do_registro": "CAS",
+      "ponto": "posterior esquerdo",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      1.5,
+      8.2
+    ],
+    "duracao_s": 6.7,
+    "eventos": [
+      {
+        "inicio": 5.436,
+        "fim": 6.174,
+        "rotulo": "Wheeze"
+      },
+      {
+        "inicio": 0.51,
+        "fim": 2.184,
+        "rotulo": "Wheeze"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +27.4 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": ""
+  },
+  {
+    "id": "sibilo-2",
+    "arquivo": "sibilo-2.wav",
+    "classe": "Sibilos",
+    "rotulo_original": "Wheeze",
+    "uso": "alternativo",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2022/train2022_wav",
+      "sha256_original": "5dd4dc0a92d03fbbd3f322cd7b1f5ae731a5a1c40230fca6a660db1aef3fd6ec",
+      "rotulo_do_registro": "CAS",
+      "ponto": "lateral esquerdo",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      0.8,
+      8.6
+    ],
+    "duracao_s": 7.8,
+    "eventos": [
+      {
+        "inicio": 0.347,
+        "fim": 1.697,
+        "rotulo": "Wheeze"
+      },
+      {
+        "inicio": 5.718,
+        "fim": 7.538,
+        "rotulo": "Wheeze"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +32.5 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": "Metadados de paciente omitidos na distribuição pública."
+  },
+  {
+    "id": "ronco-1",
+    "arquivo": "ronco-1.wav",
+    "classe": "Roncos",
+    "rotulo_original": "Rhonchi",
+    "uso": "principal",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2022/test2022_wav",
+      "sha256_original": "3ec1d702a39a3892606555723d01e497f46376ca401e63eae079e3b5fa4215ec",
+      "rotulo_do_registro": "CAS",
+      "ponto": "posterior direito",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      3.0,
+      14.2
+    ],
+    "duracao_s": 11.2,
+    "eventos": [
+      {
+        "inicio": 0.231,
+        "fim": 0.929,
+        "rotulo": "Rhonchi"
+      },
+      {
+        "inicio": 3.95,
+        "fim": 4.585,
+        "rotulo": "Rhonchi"
+      },
+      {
+        "inicio": 5.47,
+        "fim": 6.172,
+        "rotulo": "Rhonchi"
+      },
+      {
+        "inicio": 7.136,
+        "fim": 8.018,
+        "rotulo": "Rhonchi"
+      },
+      {
+        "inicio": 10.163,
+        "fim": 11.024,
+        "rotulo": "Rhonchi"
+      },
+      {
+        "inicio": 8.871,
+        "fim": 9.958,
+        "rotulo": "Normal"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +17.3 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": ""
+  },
+  {
+    "id": "ronco-2",
+    "arquivo": "ronco-2.wav",
+    "classe": "Roncos",
+    "rotulo_original": "Rhonchi",
+    "uso": "alternativo",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2023/test2023_wav",
+      "sha256_original": "92b87fd4d85316f4ec71bfe3f20c7f49900f00f8756c2ff28a7cc4c12e1ca7ce",
+      "rotulo_do_registro": "CAS",
+      "ponto": "lateral esquerdo",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      2.4,
+      8.4
+    ],
+    "duracao_s": 6.0,
+    "eventos": [
+      {
+        "inicio": 0.292,
+        "fim": 1.971,
+        "rotulo": "Rhonchi"
+      },
+      {
+        "inicio": 4.233,
+        "fim": 5.694,
+        "rotulo": "Rhonchi"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +23.1 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": "Sinal original fraco; ganho aplicado."
+  },
+  {
+    "id": "fino-1",
+    "arquivo": "fino-1.wav",
+    "classe": "Estertores finos",
+    "rotulo_original": "Fine Crackle",
+    "uso": "principal",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2022/train2022_wav",
+      "sha256_original": "899eb80ed88c55c2c5b9411f9f2afabed5135b6e438e572aa5e75bc17f81e1a8",
+      "rotulo_do_registro": "DAS",
+      "ponto": "lateral esquerdo",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      4.6,
+      15.36
+    ],
+    "duracao_s": 10.76,
+    "eventos": [
+      {
+        "inicio": 0.198,
+        "fim": 1.966,
+        "rotulo": "Fine Crackle"
+      },
+      {
+        "inicio": 3.495,
+        "fim": 4.96,
+        "rotulo": "Fine Crackle"
+      },
+      {
+        "inicio": 6.145,
+        "fim": 7.788,
+        "rotulo": "Fine Crackle"
+      },
+      {
+        "inicio": 8.931,
+        "fim": 10.664,
+        "rotulo": "Fine Crackle"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +30.3 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": "Gravação limitada a cerca de 800 Hz: o estalido soa menos agudo que no adulto."
+  },
+  {
+    "id": "fino-2",
+    "arquivo": "fino-2.wav",
+    "classe": "Estertores finos",
+    "rotulo_original": "Fine Crackle",
+    "uso": "alternativo",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2023/test2023_wav",
+      "sha256_original": "812d6a0e895e4da5d1129ae50a7c3dccefffee9455b7f74dc43c231ba5cc59ba",
+      "rotulo_do_registro": "DAS",
+      "ponto": "lateral direito",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      5.4,
+      9.8
+    ],
+    "duracao_s": 4.4,
+    "eventos": [
+      {
+        "inicio": 0.15,
+        "fim": 1.88,
+        "rotulo": "Fine Crackle"
+      },
+      {
+        "inicio": 2.22,
+        "fim": 4.233,
+        "rotulo": "Fine Crackle"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +20.4 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": "Ruído de fundo alto."
+  },
+  {
+    "id": "grosso-1",
+    "arquivo": "grosso-1.wav",
+    "classe": "Estertores grossos",
+    "rotulo_original": "Coarse Crackle",
+    "uso": "principal",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2022/test2022_wav",
+      "sha256_original": "140df5f85a4753a57389aef395149a542ec1e28f369ba4e989f53e2dfdc9e1cb",
+      "rotulo_do_registro": "DAS",
+      "ponto": "lateral direito",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      3.4,
+      7.7
+    ],
+    "duracao_s": 4.3,
+    "eventos": [
+      {
+        "inicio": 2.147,
+        "fim": 2.62,
+        "rotulo": "Coarse Crackle"
+      },
+      {
+        "inicio": 3.442,
+        "fim": 4.064,
+        "rotulo": "Coarse Crackle"
+      },
+      {
+        "inicio": 0.178,
+        "fim": 1.131,
+        "rotulo": "Coarse Crackle"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +15.6 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": "Metadados de paciente omitidos na distribuição pública."
+  },
+  {
+    "id": "grosso-2",
+    "arquivo": "grosso-2.wav",
+    "classe": "Estertores grossos",
+    "rotulo_original": "Coarse Crackle",
+    "uso": "alternativo",
+    "fonte": {
+      "acervo": "SPRSound (SJTU Paediatric Respiratory Sound Database)",
+      "conjunto": "BioCAS2022/train2022_wav",
+      "sha256_original": "b18266c3edb2cd252375bdefa6ee3a13c375e11eddbb1b4f4026a371df7aa75b",
+      "rotulo_do_registro": "DAS",
+      "ponto": "posterior esquerdo",
+      "estetoscopio": "Yunting modelo II",
+      "amostragem_hz": 8000,
+      "url": "https://github.com/SJTU-YONGFU-RESEARCH-GRP/SPRSound"
+    },
+    "licenca": {
+      "nome": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "citacao": "Zhang Q. et al. SPRSound: Open-Source SJTU Paediatric Respiratory Sound Database. IEEE Transactions on Biomedical Circuits and Systems, 2022.",
+    "trecho_original_s": [
+      6.3,
+      8.6
+    ],
+    "duracao_s": 2.3,
+    "eventos": [
+      {
+        "inicio": 0.234,
+        "fim": 2.115,
+        "rotulo": "Coarse Crackle"
+      }
+    ],
+    "modificacoes": [
+      "corte do trecho indicado",
+      "remoção do nível DC",
+      "rampas de 30 ms no início e no fim",
+      "ganho único de +16.1 dB (sem filtragem nem compressão)",
+      "cabeçalho WAV regravado (o original declara nBlockAlign incorreto)"
+    ],
+    "nota": "Transiente forte perto de 7,2 s pode ser artefato de contato."
+  }
+]

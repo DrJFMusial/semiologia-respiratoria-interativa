@@ -1,0 +1,79 @@
+/* Composição dos slides (tela de 1600 × 900) */
+.reveal .slides > section { --pad-x: 72px; --pad-t: 46px; --pad-b: 62px; --head: 112px; }
+body.modo-apresentacao .reveal .slides > section {
+  height: 900px; padding: var(--pad-t) var(--pad-x) var(--pad-b);
+}
+.reveal aside.notes { display: none; }
+
+.eyebrow {
+  margin: 0 0 10px; font: 650 14px/1 var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--petrol-2);
+}
+.reveal .slide-head h2, .slide-head h2 {
+  margin: 0; font: 680 40px/1.12 var(--font); letter-spacing: -.015em; color: var(--ink);
+}
+.slide-head { margin-bottom: 30px; }
+.slide-head.compact { height: var(--head); margin: 0; padding-bottom: 22px; display: flex; flex-direction: column; justify-content: flex-end; }
+.slide-head.compact h2 { font-size: 34px; }
+body.modo-apresentacao .fill { height: calc(100% - var(--head)); }
+.estudo-only { display: none; }
+body.modo-estudo .estudo-only { display: block; }
+
+/* ---------- capa ---------- */
+.s-capa .capa-grid { height: 100%; display: grid; grid-template-columns: 1fr 1.08fr; gap: 56px; align-items: center; }
+.s-capa h1 { margin: 0 0 22px; font: 760 92px/0.98 var(--font); letter-spacing: -.035em; color: var(--ink); }
+.s-capa .eyebrow { margin-bottom: 26px; }
+.capa-sub { margin: 0 0 54px; font: 420 25px/1.4 var(--font); color: var(--ink-2); max-width: 600px; }
+.capa-author { border-left: 3px solid var(--petrol); padding-left: 18px; }
+.capa-author p { margin: 3px 0; font-size: 17px; color: var(--ink-3); }
+.capa-author .who { font-weight: 650; font-size: 19px; color: var(--ink); }
+.capa-fig { margin: 0; }
+.capa-svg { width: 100%; height: auto; display: block; }
+.capa-grid-lines path { stroke: var(--line); stroke-width: 1; fill: none; }
+.capa-ecg { fill: none; stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1600; stroke-dashoffset: 1600; animation: capa-draw 2.6s var(--ease) .3s forwards; }
+@keyframes capa-draw { to { stroke-dashoffset: 0; } }
+.reduce-motion .capa-ecg { stroke-dashoffset: 0; animation: none; }
+.capa-sounds .b1 { fill: var(--ven); }
+.capa-sounds .b2 { fill: var(--art); }
+.capa-sounds text { font: 650 17px var(--font); fill: var(--ink-2); text-anchor: middle; }
+.capa-sounds .brk { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.capa-sounds .brk-t { font: 500 15px var(--font); fill: var(--ink-3); }
+.capa-fig figcaption { line-height: 1.4; margin-top: 12px; font-size: 16px; color: var(--ink-3); padding-left: 4px; }
+
+/* ---------- roteiro ---------- */
+.roteiro-foot {
+  margin: 30px 0 0; max-width: 1180px; font-size: 18px; line-height: 1.5; color: var(--ink-2);
+  border-top: 1px solid var(--line); padding-top: 18px;
+}
+.roteiro-foot b { color: var(--ink); }
+
+/* ---------- caso condutor ---------- */
+.caso-grid {
+  height: 100%; display: grid; grid-template-columns: 0.9fr 1.1fr; grid-template-rows: auto auto; gap: 56px 72px; align-content: center;
+}
+.caso-id { align-self: center; }
+.caso-id h2 { margin: 0 0 30px; font: 720 58px/1.05 var(--font); letter-spacing: -.025em; }
+.caso-quote { margin: 0; font: 400 italic 30px/1.35 var(--font); color: var(--petrol); border-left: 4px solid var(--petrol-soft); padding-left: 22px; }
+.caso-facts { margin: 0; align-self: center; display: grid; gap: 0; }
+.caso-facts > div { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.caso-facts > div:first-child { border-top: 1px solid var(--line); }
+.caso-facts dt { font: 650 13.5px var(--font); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); padding-top: 4px; }
+.caso-facts dd { margin: 0; font-size: 20px; line-height: 1.45; color: var(--ink); }
+.caso-path { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.caso-path li { line-height: 1.35; display: flex; gap: 14px; align-items: center; font-size: 17px; color: var(--ink-2); padding: 14px 18px; background: var(--paper-2); border-radius: 12px; }
+.caso-path span { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--petrol); color: #fff; font-weight: 650; font-size: 15px; }
+
+/* ---------- roadmap ---------- */
+.s-proximas .roadmap { margin-top: 40px; }
+.roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--ink); }
+.roadmap > div { padding: 26px 28px 30px 0; border-bottom: 1px solid var(--line); }
+.roadmap > div:nth-child(3n+2), .roadmap > div:nth-child(3n) { padding-left: 28px; border-left: 1px solid var(--line); }
+.roadmap h5 { margin: 0 0 10px; font: 680 24px var(--font); color: var(--petrol); }
+.roadmap p { margin: 0; font-size: 18px; line-height: 1.45; color: var(--ink-2); }
+
+/* ---------- modo estudo ---------- */
+body.modo-estudo .slide-head.compact { height: auto; padding-bottom: 18px; }
+body.modo-estudo .s-capa h1 { font-size: clamp(44px, 7vw, 84px); }
+body.modo-estudo .capa-sub { font-size: clamp(18px, 2.2vw, 24px); margin-bottom: 30px; }
+@media (max-width: 900px) {body.modo-estudo .s-capa .capa-grid, body.modo-estudo .caso-grid { grid-template-columns: 1fr; gap: 26px; }body.modo-estudo .caso-path, body.modo-estudo .roadmap { grid-template-columns: 1fr; }body.modo-estudo .roadmap > div, body.modo-estudo .roadmap > div:nth-child(3n+2), body.modo-estudo .roadmap > div:nth-child(3n) { padding: 18px 0; border-left: 0; }body.modo-estudo .caso-facts > div { grid-template-columns: 1fr; gap: 4px; }body.modo-estudo .caso-id h2 { font-size: 38px; margin-bottom: 18px; }body.modo-estudo .caso-quote { font-size: 22px; }body.modo-estudo .caso-facts dd { font-size: 17px; }body.modo-estudo .slide-head h2, body.modo-estudo .reveal .slide-head h2, body.modo-estudo .slide-head.compact h2 { font-size: 26px; }body.modo-estudo .roteiro-foot { font-size: 16px; }
+}
+

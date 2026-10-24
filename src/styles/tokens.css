@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Identidade visual | "Atlas clínico"
+   Branco, azul-petróleo e cinza-azulado. Vermelho e azul só têm função
+   circulatória (sangue arterial e venoso). Âmbar marca eventos sonoros.
+   ========================================================================== */
+:root {
+  --paper: #fbfcfd;
+  --paper-2: #f2f5f7;
+  --line: #dbe3e8;
+  --line-2: #c3cfd7;
+  --ink: #10212b;
+  --ink-2: #3c4f5c;
+  --ink-3: #6b7d89;
+  --petrol: #0e5462;
+  --petrol-2: #157383;
+  --petrol-soft: #e3f0f2;
+  --slate: #5b6f80;
+  --art: #c3323c;
+  --art-soft: #f6dfe0;
+  --ven: #2f5aa3;
+  --ven-soft: #dfe7f5;
+  --sound: #c98a12;
+  --sound-soft: #f8edd6;
+  --ok: #1d7a55;
+  --ok-soft: #dff1e8;
+  --warn: #b5621a;
+  --warn-soft: #f9e9da;
+  --myo: #e2ad9c;
+
+  /* fases do ciclo: tons frios em escala, sem competir com arterial/venoso */
+  --ph-atrial: #d7e7ea;
+  --ph-ivc: #9fc7cf;
+  --ph-ejecao: #5ea5b2;
+  --ph-ivr: #b7a6cc;
+  --ph-rapido: #d6cde6;
+  --ph-diastase: #ece8f3;
+
+  --font: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --r-s: 6px;
+  --r-m: 12px;
+  --r-l: 20px;
+  --shadow: 0 1px 2px rgba(16, 33, 43, 0.06), 0 8px 24px rgba(16, 33, 43, 0.07);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+

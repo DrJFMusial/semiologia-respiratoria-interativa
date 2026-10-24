@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{display:flex;flex-wrap:wrap;gap:10px;font-family:sans-serif} .b{width:300px;height:330px;border:1px solid #ccc}</style></head><body>
+<script type="module">
+import '../src/styles/tokens.css'; import '../src/styles/resp.css';
+import { createThorax } from '../src/core/thorax.js';
+const cases = [['normal exp',{vol:0}],['normal insp',{vol:1}],['pneumo D',{vol:.5,D:{colapso:1,expande:.2},desvio:-12}],['derrame D',{vol:.5,D:{liquido:.6,expande:.3},desvio:-8}],['consol D',{vol:.5,D:{consol:1,expande:.6}}],['atelect D',{vol:.5,D:{atelect:1,expande:.4},desvio:10}],['hiper',{vol:.6,hiper:1,bronco:1}]];
+for (const [n,s] of cases){ const d=document.createElement('div'); d.className='b'; document.body.append(d); const t=createThorax(d); t.set(s); d.insertAdjacentHTML('beforeend',`<b>${n}</b>`); }
+</script></body></html>
+

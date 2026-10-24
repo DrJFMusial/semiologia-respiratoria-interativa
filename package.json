@@ -1,0 +1,21 @@
+{
+  "name": "semiologia-respiratoria-interativa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Semiologia Respiratória Interativa | E2M08 2026/2 | Prof. João Frederico Musial",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:offline": "vite build --mode offline",
+    "build:all": "vite build && vite build --mode offline"
+  },
+  "dependencies": {
+    "reveal.js": "5.2.1"
+  },
+  "devDependencies": {
+    "vite": "5.4.11",
+    "vite-plugin-singlefile": "2.0.3"
+  }
+}
