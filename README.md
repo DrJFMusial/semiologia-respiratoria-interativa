@@ -1,5 +1,11 @@
 # Semiologia Respiratória Interativa
 
+**Autor:** Prof. João Frederico Musial. **Natureza:** Material didático digital interativo.
+
+© 2026 João Frederico Musial. Todos os direitos reservados sobre os elementos originais, ressalvadas as utilizações legalmente permitidas e as licenças de terceiros. Consulte [COPYRIGHT.md](COPYRIGHT.md) e [Créditos e licenças](docs/CREDITOS_E_LICENCAS.md).
+
+O rodapé permanente identifica a autoria em todas as telas e nos modos estudo/apresentação. O botão **Direitos autorais e utilização** abre o aviso completo em diálogo acessível por teclado, compatível com os temas claro e escuro.
+
 **Aula pública:** https://drjfmusial.github.io/semiologia-respiratoria-interativa/
 
 Versão de distribuição **1.0.0**, com modos claro e escuro. O botão de lua/sol na barra alterna o tema; a preferência fica salva somente no navegador. Sem preferência salva, acompanha o tema do sistema.

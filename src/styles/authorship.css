@@ -1,0 +1,57 @@
+/* Espaço próprio para autoria: não sobrepõe a aula nem seus controles. */
+:root { --author-footer-height: 88px; }
+.author-footer {
+  position: fixed; inset: auto 0 0; z-index: 41;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px 24px; padding: 10px 24px calc(10px + env(safe-area-inset-bottom));
+  background: var(--paper); color: var(--ink-2);
+  border-top: 1px solid var(--line); font-family: var(--font);
+}
+.author-footer p { margin: 0; line-height: 1.45; }
+.author-copyright { font-size: 13px; font-weight: 600; color: var(--ink); }
+.author-nature { margin-top: 2px !important; font-size: 12px; }
+.author-rights-button {
+  appearance: none; font: 600 13px/1.4 var(--font);
+  color: var(--petrol); background: transparent;
+  border: 1px solid var(--line-2); border-radius: var(--r-s);
+  min-height: 44px; padding: 8px 12px; cursor: pointer;
+  text-align: center; text-underline-offset: 3px;
+}
+.author-rights-button:hover { background: var(--petrol-soft); text-decoration: underline; }
+.author-rights-button:focus-visible, .author-dialog h2:focus-visible { outline: 3px solid var(--petrol); outline-offset: 3px; }
+body.modo-apresentacao .reveal { height: calc(100% - var(--author-footer-height) - 64px); }
+body.modo-apresentacao .appbar { bottom: calc(var(--author-footer-height) + 12px); }
+body.modo-apresentacao .sections-menu { padding-bottom: calc(var(--author-footer-height) + 70px); }
+body.modo-apresentacao .sm-inner { max-height: calc(100dvh - var(--author-footer-height) - 100px); }
+body.modo-estudo .reveal .slides { padding-bottom: calc(var(--author-footer-height) + 40px); }
+body.modo-estudo { scroll-padding-bottom: calc(var(--author-footer-height) + 16px); }
+body.modo-estudo .reveal .slides > section { scroll-margin-bottom: calc(var(--author-footer-height) + 16px); }
+.author-dialog {
+  position: fixed; inset: 0; margin: auto;
+  box-sizing: border-box; width: min(760px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px); overflow-y: auto; overscroll-behavior: contain;
+  padding: clamp(18px, 3vw, 32px); border: 1px solid var(--line-2);
+  border-radius: var(--r-l); background: var(--paper); color: var(--ink);
+  box-shadow: var(--shadow); font: 400 16px/1.65 var(--font);
+}
+.author-dialog::backdrop { background: rgb(5 18 26 / .65); }
+.author-dialog-header { position: sticky; top: 0; z-index: 1; background: var(--paper); display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+.author-dialog h2 {
+  margin: 5px 0 16px; font-size: clamp(18px, 3vw, 23px);
+  line-height: 1.3; letter-spacing: .025em; color: var(--petrol);
+}
+.author-dialog-text p { margin: 0 0 16px; }
+.author-dialog-text p:last-child { margin-bottom: 0; }
+.author-dialog-copyright { border-top: 1px solid var(--line); padding-top: 16px; }
+.author-dialog-close { flex: none; }
+@media (max-width: 720px) {
+  .author-footer { flex-wrap: wrap; gap: 4px; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); }
+  .author-footer-copy { flex: 1 1 100%; }
+  .author-copyright { font-size: 12px; }
+  .author-nature { font-size: 12px; }
+  .author-footer .author-rights-button { min-height: 44px; padding: 6px 10px; }
+}
+@media print {
+  .author-footer { position: static; break-inside: avoid; }
+  .author-rights-button, .author-dialog { display: none; }
+}

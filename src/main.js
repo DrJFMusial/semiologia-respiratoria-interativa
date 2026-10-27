@@ -16,6 +16,7 @@ import './styles/components.css';
 import './styles/base-content.css';
 import './styles/resp.css';
 import './styles/theme.css';
+import './styles/authorship.css';
 
 try {
   const savedTheme = localStorage.getItem('e2m08-theme');
