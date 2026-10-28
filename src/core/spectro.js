@@ -130,7 +130,7 @@ export class SignalView {
       g.fillRect(X(b.t0), evH, X(b.t1) - X(b.t0), h - evH - axisH);
       g.globalAlpha = 1;
     }
-    g.font = '600 11.5px Inter Variable, Inter, sans-serif'; g.textBaseline = 'middle';
+    g.font = '600 11.5px Inter Variable, Inter, sans-serif'; g.textBaseline = 'middle'; g.textAlign = 'left';
     for (const e of this.events) {
       const x0 = X(e.inicio), x1 = X(e.fim);
       g.fillStyle = e.cor || col('--sound', '#c98a12');

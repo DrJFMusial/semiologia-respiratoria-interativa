@@ -1,8 +1,9 @@
 /**
  * Modelo esquemático do ciclo respiratório e síntese de sons ESQUEMÁTICOS.
  *
- * Tudo o que sai deste arquivo é rotulado na tela como "som sintetizado
- * esquemático": serve para mostrar EM QUE MOMENTO do ciclo cada som ocorre
+ * Os sons deste modelo são sintetizados e esquemáticos; o laboratório também
+ * pode compor os sibilos com o trecho sintetizado fornecido pelo autor.
+ * Servem para mostrar EM QUE MOMENTO do ciclo cada som ocorre
  * e como ele se relaciona com o fluxo de ar. O timbre real é ensinado com
  * as gravações clínicas (core/clips.js).
  */
@@ -171,7 +172,7 @@ export function eventTimes(ev, tab) {
  * Renderiza 1 ciclo do laboratório em Float32 (SR Hz).
  * ponto: 'traqueia' | 'base'
  */
-export function renderLab(ponto, achadoId) {
+export function renderLab(ponto, achadoId, { wheeze } = {}) {
   seed = 777;
   const ach = ACHADOS_LAB[achadoId];
   const tab = cycleTable(ach.variante);
@@ -185,8 +186,12 @@ export function renderLab(ponto, achadoId) {
     d = breathNoise(n, SR, tab, { lp: 260, inspGain: 1, expGain: 0.42, expFade: 0.38, pow: 1.2 });
   }
   const atenua = ponto === 'traqueia' ? 1 : 0.85;
+  const eventos = [];
   for (const ev of ach.eventos) {
-    const [t0, t1] = eventTimes(ev, tab);
+    const [t0, eventEnd] = eventTimes(ev, tab);
+    const t1 = achadoId === 'sibilos' && wheeze
+      ? Math.min(eventEnd, t0 + wheeze.data.length / wheeze.sr) : eventEnd;
+    if (t1 > t0) eventos.push({ inicio: t0, fim: t1, rotulo: ev.rotulo });
     if (achadoId === 'finos') {
       const k = 14;
       for (let j = 0; j < k; j++) {
@@ -200,7 +205,11 @@ export function renderLab(ponto, achadoId) {
         addWavelet(d, SR, t, { f: 170 + rnd() * 60, tau: 0.0055, amp: 0.85 * atenua, pol: rnd() > 0.5 ? 1 : -1 });
       }
     } else if (achadoId === 'sibilos') {
-      addTone(d, SR, t0, t1, { f0: 470, f1: 400, harm: [1, 0.28, 0.1], amp: 0.32 * atenua, vib: 4,
+      if (wheeze) {
+        if (wheeze.sr !== SR) throw new Error('A amostragem dos sibilos deve corresponder ao laboratório');
+        const start = Math.round(t0 * SR), length = Math.min(wheeze.data.length, Math.round((t1 - t0) * SR));
+        for (let i = 0; i < length && start + i < d.length; i++) d[start + i] += wheeze.data[i] * atenua;
+      } else addTone(d, SR, t0, t1, { f0: 470, f1: 400, harm: [1, 0.28, 0.1], amp: 0.32 * atenua, vib: 4,
         env: (t) => { const f = -flowAt(tab, t % tab.T); return Math.max(0, Math.min(1, f * 1.6)) * Math.min(1, (t - t0) * 25, (t1 - t) * 25); } });
     } else if (achadoId === 'roncos') {
       addTone(d, SR, t0, t1, { f0: 150, f1: 135, harm: [1, 0.7, 0.5, 0.35, 0.25, 0.15], amp: 0.2 * atenua, vib: 3,
@@ -221,7 +230,7 @@ export function renderLab(ponto, achadoId) {
       }
     }
   }
-  return { data: normalize(d, 0.85), sr: SR, tab };
+  return { data: normalize(d, 0.85), sr: SR, tab, eventos };
 }
 
 /* ------------------------------------------------------------------------ */

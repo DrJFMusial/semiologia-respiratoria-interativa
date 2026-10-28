@@ -5,10 +5,11 @@
  * ciclo cada som ocorre; o timbre real é ensinado com gravações clínicas.
  */
 import { createThorax } from '../../core/thorax.js';
-import { ACHADOS_LAB, renderLab, stateAt, eventTimes, cycleTable } from '../../core/synth.js';
+import { ACHADOS_LAB, renderLab, stateAt, cycleTable } from '../../core/synth.js';
 import { SignalView } from '../../core/spectro.js';
 import { toBuffer, playBuffer, stopCurrent } from '../../core/audio.js';
 import { button, setIcon, captureKeys, prefersReducedMotion } from '../../core/ui.js';
+import { loadLabWheeze } from '../../core/lab-audio.js';
 
 const SPEEDS = [{ v: 0.25, l: '0,25×' }, { v: 0.5, l: '0,5×' }, { v: 1, l: '1×' }];
 const COR_EV = { finos: 'var(--desc)', grossos: 'var(--desc)', atrito: 'var(--desc)', sibilos: 'var(--cont)', roncos: 'var(--cont)', estridor: 'var(--cont)' };
@@ -32,7 +33,7 @@ export function cicloResp(node) {
     <div class="cr-right">
       <svg class="cr-plots" viewBox="0 0 900 250" preserveAspectRatio="none" aria-hidden="true"></svg>
       <div class="cr-sig-head"><span class="cr-sig-t">Som no ponto escolhido</span><span class="tag esq">Som sintetizado esquemático</span></div>
-      <canvas class="cr-sig" aria-hidden="true"></canvas>
+      <canvas class="cr-sig" role="img" aria-label="Forma de onda e espectrograma do som do laboratório"></canvas>
       <div class="cr-detail" aria-live="polite"></div>
     </div>
     <div class="cr-controls">
@@ -51,6 +52,7 @@ export function cicloResp(node) {
   const rd = Object.fromEntries([...node.querySelectorAll('[data-r]')].map((e) => [e.dataset.r, e]));
 
   let ponto = 'base', achado = 'normal', speed = 0.5, t = 0, playing = false, soundOn = false, raf = 0, last = 0, player = null, render = null, showPpl = false;
+  let authoredWheeze = null, revision = 0, active = false, resumeAfterLoad = false;
 
   // ---- controles -------------------------------------------------------------
   const bPrev = button({ icon: 'prev', label: 'Fase anterior (seta esquerda)' });
@@ -112,8 +114,8 @@ export function cicloResp(node) {
       y += s.h + 12;
     }
     // eventos do achado
-    for (const ev of ACHADOS_LAB[achado].eventos) {
-      const [a, b] = eventTimes(ev, tab);
+    for (const ev of render.eventos) {
+      const [a, b] = [ev.inicio, ev.fim];
       h += `<rect class="cr-ev" style="fill:${COR_EV[achado]}" x="${X(a)}" y="26" width="${X(b) - X(a)}" height="${H - 28}"/>`;
     }
     h += `<path class="cr-cursor" d=""/>`;
@@ -121,14 +123,36 @@ export function cicloResp(node) {
     plots.querySelectorAll('[data-ph]').forEach((r) => r.addEventListener('click', () => goPhase(r.dataset.ph)));
   }
 
-  function rebuild() {
-    render = renderLab(ponto, achado);
+  async function rebuild() {
+    const request = ++revision;
+    const resume = playing || resumeAfterLoad;
+    pause();
+    resumeAfterLoad = resume;
+    let audioError = false;
+    if (achado === 'sibilos' && !authoredWheeze) {
+      node.dataset.audioSource = 'loading';
+      bPlay.disabled = bSound.disabled = true;
+      detail.textContent = 'Carregando o som sintetizado do autor…';
+      try { authoredWheeze = await loadLabWheeze(); }
+      catch { audioError = true; }
+    }
+    if (request !== revision) return;
+    bPlay.disabled = false;
+    bSound.disabled = audioError;
+    const usesAuthor = achado === 'sibilos' && authoredWheeze;
+    node.dataset.audioSource = audioError ? 'error' : usesAuthor ? 'author' : 'synthetic';
+    const tag = node.querySelector('.cr-sig-head .tag');
+    tag.textContent = audioError ? 'Áudio indisponível' : usesAuthor ? 'Som sintetizado do autor' : 'Som sintetizado esquemático';
+    // Na falha de carregamento não substitui silenciosamente o arquivo pelo tom antigo.
+    const wheeze = authoredWheeze || { data: new Float32Array(0), sr: 16000 };
+    render = renderLab(ponto, achado, achado === 'sibilos' ? { wheeze } : {});
     const tab = render.tab;
     const ach = ACHADOS_LAB[achado];
+    sig.fmax = usesAuthor ? 2000 : 1500;
     sig.set({
       data: render.data, sr: render.sr,
       bands: [{ t0: 0, t1: tab.ti, cor: getVar('--insp') }, { t0: tab.ti, t1: tab.fimExp, cor: getVar('--exp') }],
-      events: ach.eventos.map((ev) => { const [a, b] = eventTimes(ev, tab); return { inicio: a, fim: b, rotulo: ev.rotulo, cor: getVar(achado in COR_EV ? (COR_EV[achado] === 'var(--cont)' ? '--cont' : '--desc') : '--sound') }; }),
+      events: render.eventos.map(ev => ({ ...ev, cor: getVar(achado in COR_EV ? (COR_EV[achado] === 'var(--cont)' ? '--cont' : '--desc') : '--sound') })),
       range: 50,
     });
     const pontoTxt = ponto === 'traqueia'
@@ -136,12 +160,20 @@ export function cicloResp(node) {
       : 'Na base, o murmúrio vesicular ocupa toda a inspiração e só o início da expiração, mais fraco: o pulmão aerado filtra as frequências altas.';
     detail.innerHTML = `<p><b>${ach.nome}.</b> ${ach.texto || pontoTxt}</p>${ach.soBase && ponto === 'traqueia' ? '<p class="cr-warn">Este achado é definido pela base: na traqueia esse padrão é o normal.</p>' : ''}
       ${achado === 'estridor' && ponto === 'base' ? '<p class="cr-warn">O estridor nasce na via aérea alta: compare com o ponto traqueia, onde é mais intenso.</p>' : ''}`;
+    if (usesAuthor) detail.insertAdjacentHTML('beforeend', '<p class="cr-audio-note">Trecho do áudio do autor inserido na expiração do modelo, sem alterar a velocidade da gravação.</p>');
+    if (audioError) {
+      detail.insertAdjacentHTML('beforeend', '<p class="cr-warn">Não foi possível carregar o áudio. Selecione outro achado e tente novamente.</p>');
+      toggleSound(false);
+    }
     rd.fr.textContent = `${Math.round(60 / tab.T)} irpm`;
     rd.ie.textContent = `1 : ${((tab.fimExp - tab.ti) / tab.ti).toFixed(1).replace('.', ',')}`;
     t = t % tab.T;
     drawPlots();
     restartAudio();
     paint();
+    const shouldResume = resumeAfterLoad && active;
+    resumeAfterLoad = false;
+    if (shouldResume) play();
   }
   const getVar = (v) => getComputedStyle(node).getPropertyValue(v).trim() || '#888';
 
@@ -166,7 +198,7 @@ export function cicloResp(node) {
   }
   function frame(now) {
     const dt = last ? Math.min(0.05, (now - last) / 1000) : 0; last = now;
-    if (player && soundOn) t = ((player.ctx.currentTime - player.startedAt) % render.tab.T + render.tab.T) % render.tab.T;
+    if (player && soundOn) t = (player.offset + Math.max(0, player.ctx.currentTime - player.startedAt)) % render.tab.T;
     else t = (t + dt * speed) % render.tab.T;
     th.tick(now);
     paint();
@@ -176,14 +208,13 @@ export function cicloResp(node) {
     { const p = player; player = null; p?.stop(); }
     if (playing && soundOn && speed === 1) {
       player = playBuffer(toBuffer(render.data, render.sr), { loop: true, offset: t, onStop: () => { if (player && playing) { player = null; pause(); } } });
-      player.startedAt -= t; // alinha o relógio ao ponto do ciclo
     }
   }
   function play() {
     if (prefersReducedMotion() && !soundOn) { stepPhase(1); return; }
     playing = true; last = 0; setIcon(bPlay, 'pause'); restartAudio(); raf = requestAnimationFrame(frame);
   }
-  function pause() { playing = false; cancelAnimationFrame(raf); setIcon(bPlay, 'play'); { const p = player; player = null; p?.stop(); } }
+  function pause() { playing = false; resumeAfterLoad = false; cancelAnimationFrame(raf); setIcon(bPlay, 'play'); { const p = player; player = null; p?.stop(); } }
   function toggleSound(on = !soundOn) {
     soundOn = on; setIcon(bSound, on ? 'sound' : 'mute'); bSound.setAttribute('aria-pressed', String(on));
     if (on && speed !== 1) setSpeed(1);
@@ -213,6 +244,6 @@ export function cicloResp(node) {
   });
   rebuild();
   cycleTable('obstrutivo');
-  return { deactivate: pause, pause };
+  return { activate() { active = true; }, deactivate() { active = false; pause(); }, pause };
 }
 

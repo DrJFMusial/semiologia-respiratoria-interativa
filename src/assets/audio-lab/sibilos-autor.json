@@ -1,0 +1,23 @@
+{
+  "titulo": "Sibilos — som sintetizado do autor",
+  "autor": "Prof. João Frederico Musial",
+  "origem": "P04_sibilos.mp3, fornecido pelo autor",
+  "natureza": "Áudio próprio sintetizado, conforme informação do autor",
+  "sha256_original": "4e393439c94bc1fae88abdba92c72e20d543070e27230e748883124903c8dcff",
+  "duracao_original_s": 12.460375,
+  "trecho_original_s": [
+    2.35,
+    3.75
+  ],
+  "duracao_s": 1.4,
+  "amostragem_hz": 16000,
+  "modificacoes": [
+    "seleção de trecho para inserção na expiração do modelo",
+    "conversão estéreo para mono por média dos canais",
+    "reamostragem para 16 kHz sem alteração de velocidade",
+    "rampas de 10 ms nas bordas",
+    "ganho constante de 15.11 dB",
+    "exportação WAV PCM 16 bits; sem estiramento temporal ou alteração de altura"
+  ],
+  "sha256_trecho": "2a52a7315156d4924233591d296a8514c69de767c4b8f923d7d40db440d548f9"
+}

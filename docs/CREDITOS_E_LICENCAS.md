@@ -33,6 +33,8 @@ A licença CC BY 4.0 permite pesquisa, uso didático local e redistribuição p�
 
 Laboratório do ciclo, sons normais esquemáticos, posição dos estertores, atrito, estridor, sons de percussão e vogal da ressonância vocal são sintetizados no navegador por este projeto (`src/core/synth.js`) e identificados na tela como "som sintetizado esquemático". Não são registros clínicos.
 
+No laboratório, a opção **Sibilos** utiliza um trecho de `P04_sibilos.mp3`, fornecido por Prof. João Frederico Musial e informado por ele como áudio próprio sintetizado, com autorização para uso na aula. O trecho de 2,35–3,75 s é convertido para mono/16 kHz, recebe rampas de 10 ms e ganho constante, sem mudança de velocidade ou altura. É inserido na expiração do ciclo esquemático de 5 s. A forma de onda e o espectrograma são calculados sobre o sinal efetivamente reproduzido; as curvas de volume, fluxo e pressão permanecem modelos ilustrativos. Os hashes, intervalo e processamento constam de `src/assets/audio-lab/sibilos-autor.json`. Os direitos sobre esse áudio próprio são reservados ao autor. As gravações clínicas SPRSound e suas licenças permanecem inalteradas.
+
 ## Ilustrações
 
 Ilustrações do professor, convertidas para WebP com recorte e ajuste de transparência (sem outras alterações): tórax posterior, tórax lateral direito, expansibilidade, frêmito, ausculta posterior e axilar, tórax normal, em tonel, pectus excavatum e carinatum, dedo normal e baqueteamento. Produzidas pelo autor com ferramenta de geração de imagem e revisadas por ele.
