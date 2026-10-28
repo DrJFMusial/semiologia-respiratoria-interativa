@@ -31,7 +31,7 @@ A licença CC BY 4.0 permite pesquisa, uso didático local e redistribuição p�
 
 ## Sons sintetizados
 
-Laboratório do ciclo, sons normais esquemáticos, posição dos estertores, atrito, estridor, sons de percussão e vogal da ressonância vocal são sintetizados no navegador por este projeto (`src/core/synth.js`) e identificados na tela como "som sintetizado esquemático". Não são registros clínicos.
+Laboratório do ciclo, sons normais esquemáticos, posição dos estertores, atrito, sons de percussão e vogal da ressonância vocal são sintetizados no navegador por este projeto (`src/core/synth.js`) e identificados na tela como "som sintetizado esquemático". Não são registros clínicos.
 
 No laboratório, a opção **Sibilos** utiliza um trecho de `P04_sibilos.mp3`, fornecido por Prof. João Frederico Musial e informado por ele como áudio próprio sintetizado, com autorização para uso na aula. O trecho de 2,35–3,75 s é convertido para mono/16 kHz, recebe rampas de 10 ms e ganho constante, sem mudança de velocidade ou altura. É inserido na expiração do ciclo esquemático de 5 s. A forma de onda e o espectrograma são calculados sobre o sinal efetivamente reproduzido; as curvas de volume, fluxo e pressão permanecem modelos ilustrativos. Os hashes, intervalo e processamento constam de `src/assets/audio-lab/sibilos-autor.json`. Os direitos sobre esse áudio próprio são reservados ao autor. As gravações clínicas SPRSound e suas licenças permanecem inalteradas.
 
@@ -61,3 +61,13 @@ Desenhados em código para esta aula: tórax frontal esquemático, anatomia de s
 - ZHANG, Q. et al. SPRSound: open-source SJTU paediatric respiratory sound database. *IEEE Transactions on Biomedical Circuits and Systems*, 2022.
 
 
+
+## Atualização 1.2.0 — 28/10/2026
+
+Consolidação da atividade de artefatos da versão 1.1.0 fornecida pelo professor com os ajustes previamente publicados: tema claro/escuro, aviso autoral acessível, ligação com a aula cardiovascular, proteção dos dados do acervo SPRSound e sibilos do autor. Total: 27 telas.
+
+A opção Estridor utiliza agora Estridor.mp3, enviado pelo professor, integral e sem alteração do arquivo, da velocidade ou da altura. A reprodução decodifica o MP3 no navegador e usa a média dos canais para mono em memória, na taxa do contexto de áudio. Não se atribui a esse arquivo a licença SPRSound nem autoria original não informada. Hash e procedência: src/assets/audio-lab/estridor-professor.json.
+
+O estridor está no laboratório e na tela de sons contínuos. No laboratório, as fases e variáveis fisiológicas não são apresentadas como se fossem medidas da gravação: o traçado sonoro corresponde ao arquivo integral, enquanto os controles de fase, ponto e velocidade ficam desabilitados para essa opção. As outras opções mantêm o modelo didático.
+
+A atividade de pele/roupa permanece uma síntese didática. A regularidade dos eventos é uma convenção do modelo; não constitui critério diagnóstico absoluto.

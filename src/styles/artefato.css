@@ -1,0 +1,47 @@
+:root { --art: #b5621a; --art-soft: #fff1df; }
+[data-theme="dark"] { --art: #f3ba81; --art-soft: #453020; }
+/* ---------- artefato da ausculta sobre a roupa (1.1.0) ---------- */
+.art { display: grid; grid-template-columns: 430px minmax(0, 1fr); gap: 34px; }
+.art-left { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.art-fig { width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.art-lung { fill: var(--skin); }
+.art-skin { stroke: var(--skin-line); stroke-width: 4; }
+.art-cloth path:first-child { fill: none; stroke: #7d6ba3; stroke-width: 9; stroke-linecap: round; opacity: .75; }
+.art-spark path { fill: none; stroke: var(--warn); stroke-width: 2.5; stroke-linecap: round; }
+.art-steth rect { fill: #cfd9df; stroke: #5b6f80; stroke-width: 2.5; }
+.art-steth path { fill: none; stroke: #5b6f80; stroke-width: 5; stroke-linecap: round; }
+.art-l { font: 600 12.5px var(--font); fill: var(--ink-3); }
+.art-l.w { fill: #6a4fa0; }
+.art-cap { fill: var(--petrol); font-size: 13px; }
+.art-txt h4 { margin: 0 0 6px; font: 680 19px var(--font); color: var(--ink); }
+.art-txt ol { counter-reset: st; margin: 0 0 10px !important; }
+.art-txt ol li { counter-increment: st; position: relative; padding-left: 32px; margin-bottom: 6px; font-size: 15.5px; line-height: 1.4; }
+.art-txt ol li::before { content: counter(st); position: absolute; left: 0; top: 0; width: 23px; height: 23px; border-radius: 50%; background: var(--petrol); color: #fff; font: 650 12.5px/23px var(--font); text-align: center; }
+.art-key { margin: 0; padding: 10px 14px; border-left: 4px solid var(--art); background: var(--art-soft); border-radius: 0 8px 8px 0; font-size: 15.5px; line-height: 1.45; color: var(--ink); font-weight: 600; }
+.art-right { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+.art-modo, .seg-row { display: flex; }
+.art-ctl { display: flex; flex-direction: column; gap: 8px; }
+.art-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.art-row.seg-row { gap: 0; }
+.art-sig { width: 100%; flex: 1; min-height: 220px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.art-bar .tag { white-space: normal; }
+.art-res p { margin: 0 0 6px; font-size: 15.5px; line-height: 1.45; color: var(--ink-2); }
+.art-res p.ok, .art-res p.no { padding: 8px 12px; border-radius: 8px; color: var(--ink); }
+.art-res p.ok { background: var(--ok-soft); border-left: 4px solid var(--ok); }
+.art-res p.no { background: var(--warn-soft); border-left: 4px solid var(--warn); }
+.art-hint { color: var(--ink-3) !important; }
+.art-leg { font-size: 13px !important; color: var(--ink-3) !important; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.art-leg .lg { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.art-leg .lg.r { background: #c3323c; } .art-leg .lg.a { background: #b5621a; }
+@media (max-width: 1100px) {
+  body.modo-estudo .art { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  body.modo-estudo .art-sig { height: 300px; flex: none; }
+  body.modo-estudo .art-modo, body.modo-estudo .seg-row { flex-wrap: wrap; }
+  body.modo-estudo .art .btn.seg { border-radius: 8px; margin: 0 4px 4px 0; }
+}
+
+.audio-professor { margin-top: 10px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.audio-professor p { margin: 4px 0; font-size: 14px; }
+
+.cr-plots[hidden] { display:none !important; }
+.cr-sig-head .tag { white-space: normal; }

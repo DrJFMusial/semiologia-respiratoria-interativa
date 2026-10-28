@@ -15,6 +15,7 @@ import './styles/slides.css';
 import './styles/components.css';
 import './styles/base-content.css';
 import './styles/resp.css';
+import './styles/artefato.css';
 import './styles/theme.css';
 import './styles/authorship.css';
 
@@ -43,6 +44,8 @@ import { mapaAusculta } from './simulators/ausculta/mapa.js';
 import { gravacao, somEsquema, fasesNormais } from './simulators/ausculta/gravacao.js';
 import { ressonancia } from './simulators/ausculta/ressonancia.js';
 import { escuta } from './simulators/quiz/escuta.js';
+import { artefato } from './simulators/ausculta/artefato.js';
+import { audioProfessor } from './simulators/ausculta/audio-professor.js';
 import { sindromes } from './simulators/sindromes/index.js';
 import { descritor } from './components/descritor.js';
 import { registro } from './components/registro.js';
@@ -69,7 +72,7 @@ try {
 
 // ---- componentes ------------------------------------------------------------------
 const C = {
-  capa, roteiro, revelar, hotspots, checklist, creditos,
+  capa, roteiro, revelar, hotspots, checklist, creditos, artefato, 'audio-professor': audioProfessor,
   superficie, mecanica, 'ciclo-resp': cicloResp, formas, baqueteamento, padroes,
   expansib, fremito, percussao, 'mapa-ausculta': mapaAusculta, gravacao, 'som-esquema': somEsquema,
   'fases-normais': fasesNormais, ressonancia, escuta, sindromes, descritor, registro,

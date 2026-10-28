@@ -95,7 +95,7 @@ A distribuição pública usa fichas sem identificadores de paciente, idade ou s
 
 ## Publicação no GitHub Pages
 
-O GitHub Actions executa 
+O GitHub Actions executa
 pm ci`, gera `dist/` e publica a cada envio para `main`. Ver [`docs/PUBLICACAO_GITHUB_PAGES.md`](docs/PUBLICACAO_GITHUB_PAGES.md).
 
 ## Dependências
@@ -108,3 +108,13 @@ pm ci`, gera `dist/` e publica a cada envio para `main`. Ver [`docs/PUBLICACAO_G
 
 Fontes Inter e IBM Plex Mono (OFL 1.1). Créditos completos em [`docs/CREDITOS_E_LICENCAS.md`](docs/CREDITOS_E_LICENCAS.md).
 
+
+## Atualização 1.2.0 — 28/10/2026
+
+Consolidação da atividade de artefatos da versão 1.1.0 fornecida pelo professor com os ajustes previamente publicados: tema claro/escuro, aviso autoral acessível, ligação com a aula cardiovascular, proteção dos dados do acervo SPRSound e sibilos do autor. Total: 27 telas.
+
+A opção Estridor utiliza agora Estridor.mp3, enviado pelo professor, integral e sem alteração do arquivo, da velocidade ou da altura. A reprodução decodifica o MP3 no navegador e usa a média dos canais para mono em memória, na taxa do contexto de áudio. Não se atribui a esse arquivo a licença SPRSound nem autoria original não informada. Hash e procedência: src/assets/audio-lab/estridor-professor.json.
+
+O estridor está no laboratório e na tela de sons contínuos. No laboratório, as fases e variáveis fisiológicas não são apresentadas como se fossem medidas da gravação: o traçado sonoro corresponde ao arquivo integral, enquanto os controles de fase, ponto e velocidade ficam desabilitados para essa opção. As outras opções mantêm o modelo didático.
+
+A atividade de pele/roupa permanece uma síntese didática. A regularidade dos eventos é uma convenção do modelo; não constitui critério diagnóstico absoluto.

@@ -172,8 +172,9 @@ export function eventTimes(ev, tab) {
  * Renderiza 1 ciclo do laboratório em Float32 (SR Hz).
  * ponto: 'traqueia' | 'base'
  */
-export function renderLab(ponto, achadoId, { wheeze } = {}) {
-  seed = 777;
+export function renderLab(ponto, achadoId, { wheeze, seed0 = 777 } = {}) {
+  if (achadoId === 'estridor') throw new Error('Estridor usa o arquivo do professor; não há síntese substituta.');
+  seed = seed0;
   const ach = ACHADOS_LAB[achadoId];
   const tab = cycleTable(ach.variante);
   const n = Math.round(tab.T * SR);
@@ -214,10 +215,6 @@ export function renderLab(ponto, achadoId, { wheeze } = {}) {
     } else if (achadoId === 'roncos') {
       addTone(d, SR, t0, t1, { f0: 150, f1: 135, harm: [1, 0.7, 0.5, 0.35, 0.25, 0.15], amp: 0.2 * atenua, vib: 3,
         env: (t) => { const f = Math.abs(flowAt(tab, t % tab.T)); return Math.min(1, f * 1.5) * Math.min(1, (t - t0) * 20, (t1 - t) * 20); } });
-    } else if (achadoId === 'estridor') {
-      const g = ponto === 'traqueia' ? 0.6 : 0.18;
-      addTone(d, SR, t0, t1, { f0: 780, f1: 820, harm: [1, 0.4, 0.15], amp: g, vib: 6,
-        env: (t) => Math.max(0, Math.min(1, flowAt(tab, t % tab.T) * 1.4)) });
     } else if (achadoId === 'atrito') {
       let t = t0;
       while (t < t1) {
@@ -291,5 +288,67 @@ export function renderVogal(vogal = 'i', dur = 1.6) {
   }
   for (let i = 0; i < n; i++) { const u = i / n; out[i] *= Math.min(1, u * 14, (1 - u) * 10); }
   return { data: normalize(out, 0.8), sr };
+}
+
+
+// Comparação didática pele/roupa, incorporada da revisão 1.1.0.
+export function renderArtefato(achadoId, ciclos = 3) {
+  const tab = cycleTable('normal');
+  const nC = Math.round(tab.T * SR), n = nC * ciclos;
+  const pele = new Float32Array(n);
+  const reais = [], bands = [];
+  for (let k = 0; k < ciclos; k++) {
+    const r = renderLab('base', achadoId, { seed0: 777 + k * 131 });
+    pele.set(r.data.subarray(0, nC), k * nC);
+    const o = k * tab.T;
+    bands.push({ t0: o, t1: o + tab.ti, cor: '#4a9fd1', rotulo: 'inspiração' }, { t0: o + tab.ti, t1: o + tab.fimExp, cor: '#7d8ea3', rotulo: 'expiração' });
+    for (const ev of ACHADOS_LAB[achadoId].eventos) {
+      const [t0, t1] = eventTimes(ev, tab);
+      reais.push({ inicio: o + t0, fim: o + t1, rotulo: 'ruído adventício', curto: 'adventício', cor: '#c3323c' });
+    }
+  }
+  // som pulmonar atravessando o tecido: menos intenso e sem os agudos
+  const tecido = Float32Array.from(pele);
+  onePoleLP(tecido, 420, SR); onePoleLP(tecido, 420, SR);
+  for (let i = 0; i < n; i++) tecido[i] *= 0.75;
+  // atrito tecido-pele-diafragma acompanhando o movimento do tórax
+  seed = 4242;
+  const artef = [];
+  for (let k = 0; k < ciclos; k++) {
+    const o = k * tab.T;
+    let t = 0.05 + rnd() * 0.15;
+    while (t < tab.fimExp - 0.05) {
+      const v = Math.abs(flowAt(tab, t));
+      // probabilidade proporcional à velocidade da parede; padrão diferente a cada ciclo
+      if (rnd() < 0.18 + v * 0.75) {
+        const tipo = rnd();
+        const ta = o + t;
+        if (tipo < 0.62) {
+          // estalo de dobra do tecido: imita estertor
+          addWavelet(tecido, SR, ta, { f: 380 + rnd() * 520, tau: 0.0012 + rnd() * 0.0035, amp: 0.38 + rnd() * 0.42, pol: rnd() > 0.5 ? 1 : -1 });
+          artef.push({ inicio: ta, fim: ta + 0.03, rotulo: 'artefato', curto: 'artefato', cor: '#b5621a' });
+        } else {
+          // rangido curto: imita atrito
+          const dur = 0.05 + rnd() * 0.12, i0 = Math.floor(ta * SR);
+          let tt = 0;
+          while (tt < dur) {
+            const d2 = 0.004 + rnd() * 0.006;
+            const burst = new Float32Array(Math.round(d2 * SR)).map(() => noise());
+            resonate(burst, 300 + rnd() * 380, 3, SR);
+            const j0 = i0 + Math.floor(tt * SR);
+            for (let i = 0; i < burst.length && j0 + i < n; i++) tecido[j0 + i] += burst[i] * 0.55 * Math.sin((Math.PI * i) / burst.length);
+            tt += 0.012 + rnd() * 0.02;
+          }
+          artef.push({ inicio: ta, fim: ta + dur, rotulo: 'artefato', curto: 'artefato', cor: '#b5621a' });
+        }
+      }
+      t += 0.09 + rnd() * 0.32;
+    }
+  }
+  // mesma escala para as duas versões (a comparação de intensidade é justa)
+  let pk = 0; for (const v of pele) pk = Math.max(pk, Math.abs(v)); for (const v of tecido) pk = Math.max(pk, Math.abs(v));
+  const g = 0.9 / pk;
+  for (let i = 0; i < n; i++) { pele[i] *= g; tecido[i] *= g; }
+  return { sr: SR, bands, pele: { data: pele, events: reais }, tecido: { data: tecido, events: [...reais, ...artef] } };
 }
 
