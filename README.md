@@ -118,3 +118,9 @@ A opção Estridor utiliza agora Estridor.mp3, enviado pelo professor, integral 
 O estridor está no laboratório e na tela de sons contínuos. No laboratório, as fases e variáveis fisiológicas não são apresentadas como se fossem medidas da gravação: o traçado sonoro corresponde ao arquivo integral, enquanto os controles de fase, ponto e velocidade ficam desabilitados para essa opção. As outras opções mantêm o modelo didático.
 
 A atividade de pele/roupa permanece uma síntese didática. A regularidade dos eventos é uma convenção do modelo; não constitui critério diagnóstico absoluto.
+
+## Substituição dos sibilos — 1.2.1 (28/10/2026)
+
+No laboratório do ciclo respiratório, o trecho anterior de P04_sibilos.mp3 foi substituído pelo novo sibilo.mp3 fornecido pelo professor. O MP3 original é preservado sem alteração em src/assets/audio-lab/sibilo-professor.mp3. SHA-256: f752ff98d12e44556dd0c56131173d7b12efa71e7fd868a8f943b72f938599c1.
+
+O navegador decodifica em 16 kHz, faz a média dos canais para mono e seleciona uma janela contínua de 1,4 s de maior energia, com rampas de 10 ms nas bordas. Não há aceleração nem mudança de altura. A seleção é acústica, não uma anotação clínica de fases; a janela é inserida na expiração do modelo didático. O intervalo utilizado é exibido na tela e os gráficos correspondem ao sinal final reproduzido. O arquivo não é apresentado como sintetizado nem recebe licença SPRSound. Sua autoria original e natureza clínica/sintética não foram informadas; identificação limitada a arquivo fornecido pelo professor. Os trechos da biblioteca SPRSound permanecem inalterados.

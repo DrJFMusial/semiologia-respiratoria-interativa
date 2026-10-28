@@ -138,7 +138,7 @@ export function cicloResp(node) {
     if (achado === 'sibilos' && !authoredWheeze) {
       node.dataset.audioSource = 'loading';
       bPlay.disabled = bSound.disabled = true;
-      detail.textContent = 'Carregando o som sintetizado do autor…';
+      detail.textContent = 'Carregando o novo arquivo de sibilos…';
       try { authoredWheeze = await loadLabWheeze(); }
       catch { audioError = true; }
     }
@@ -153,7 +153,7 @@ export function cicloResp(node) {
     const usesAuthor = achado === 'sibilos' && authoredWheeze;
     node.dataset.audioSource = audioError ? 'error' : achado === 'estridor' ? 'professor-stridor' : usesAuthor ? 'author' : 'synthetic';
     const tag = node.querySelector('.cr-sig-head .tag');
-    tag.textContent = audioError ? 'Áudio indisponível' : achado === 'estridor' ? 'Arquivo de estridor do professor' : usesAuthor ? 'Som sintetizado do autor' : 'Som sintetizado esquemático';
+    tag.textContent = audioError ? 'Áudio indisponível' : achado === 'estridor' ? 'Arquivo de estridor do professor' : usesAuthor ? 'Trecho de sibilo.mp3 do professor' : 'Som sintetizado esquemático';
     // Na falha de carregamento não substitui silenciosamente o arquivo pelo tom antigo.
     const wheeze = authoredWheeze || { data: new Float32Array(0), sr: 16000 };
     if (achado === 'estridor') {
@@ -177,7 +177,7 @@ export function cicloResp(node) {
     if (achado === 'estridor') {
       detail.innerHTML = '<p><b>Estridor — arquivo selecionado pelo professor.</b> Reprodução integral em velocidade original. Não há marcação das fases respiratórias neste arquivo; volume, fluxo, FR e relação I:E não são inferidos do áudio. O mesmo arquivo é usado nas duas seleções de ponto.</p>';
     }
-    if (usesAuthor) detail.insertAdjacentHTML('beforeend', '<p class="cr-audio-note">Trecho do áudio do autor inserido na expiração do modelo, sem alterar a velocidade da gravação.</p>');
+    if (usesAuthor) detail.insertAdjacentHTML('beforeend', `<p class="cr-audio-note">Trecho de sibilo.mp3 (${authoredWheeze.start.toFixed(2)}–${authoredWheeze.end.toFixed(2)} s do arquivo de ${authoredWheeze.originalDuration.toFixed(1)} s), inserido na expiração do modelo em velocidade original. O ciclo é ilustrativo.</p>`);
     if (audioError) {
       detail.insertAdjacentHTML('beforeend', '<p class="cr-warn">Não foi possível carregar o áudio. Selecione outro achado e tente novamente.</p>');
       toggleSound(false);
