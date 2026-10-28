@@ -143,6 +143,6 @@ export function buildShell(deck, { modo }) {
     if (e.key === 'x' || e.key === 'X') { pauseAll(); }
     if (e.key === 'Home') { deck.slide(0); }
   });
-  buildAuthorship(deck);
+  buildAuthorship();
 }
 

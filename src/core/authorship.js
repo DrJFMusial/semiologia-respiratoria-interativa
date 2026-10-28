@@ -1,5 +1,5 @@
-/** Identificação global, independente dos simuladores e das telas didáticas. */
-export function buildAuthorship(deck) {
+/** Aviso autoral acessível a partir do encerramento da aula. */
+export function buildAuthorship() {
   const footer = document.querySelector('.author-footer');
   const dialog = document.getElementById('author-rights');
   const open = document.getElementById('author-rights-open');
@@ -33,14 +33,4 @@ export function buildAuthorship(deck) {
   });
   footer.addEventListener('keydown', (event) => event.stopPropagation());
 
-  let previousHeight = 0;
-  const reserveSpace = () => {
-    const height = Math.ceil(footer.getBoundingClientRect().height);
-    if (height === previousHeight) return;
-    previousHeight = height;
-    document.documentElement.style.setProperty('--author-footer-height', `${height}px`);
-    deck.layout?.();
-  };
-  new ResizeObserver(reserveSpace).observe(footer);
-  reserveSpace();
 }
