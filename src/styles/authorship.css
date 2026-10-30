@@ -53,3 +53,39 @@
 .author-course-link { color: var(--petrol); font: 600 13px/1.45 var(--font); text-underline-offset: 3px; padding-block: 10px; }
 .author-course-link:focus-visible { outline: 3px solid var(--petrol); outline-offset: 3px; }
 body.modo-apresentacao .s-ref .cr-scroll { max-height: 210px; }
+
+/* Encerramento compartilhado pelas quatro aulas de Semiologia. */
+.reveal .slides > section.s-encerramento {
+  --end-paper: var(--paper, #fbfcfd); --end-ink: var(--ink, #10212b);
+  --end-muted: var(--ink-2, #3c4f5c); --end-line: var(--line, #dbe3e8);
+  --end-accent: var(--petrol, #0e5462);
+  color: var(--end-ink); font-family: var(--font, system-ui, sans-serif);
+}
+.s-encerramento .slide-head { margin: 0 0 24px; }
+.s-encerramento .eyebrow { margin: 0 0 10px; color: var(--end-accent); font: 650 14px/1.4 var(--font); letter-spacing: .14em; text-transform: uppercase; }
+.reveal .s-encerramento .slide-head h2 { margin: 0; color: var(--end-ink); font: 680 40px/1.12 var(--font); letter-spacing: -.015em; }
+.reveal .s-encerramento .end-intro { margin: 0 0 28px; max-width: 1000px; color: var(--end-muted); font: 400 21px/1.5 var(--font); }
+.s-encerramento .course-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 0 0 32px; }
+.reveal .s-encerramento .course-card { display: flex; flex-direction: column; gap: 14px; min-width: 0; min-height: 235px; padding: 28px; border: 1px solid var(--end-line); border-radius: 12px; background: var(--paper-2, #f2f5f7); color: var(--end-ink); text-decoration: none; text-align: left; box-shadow: none; }
+.reveal .s-encerramento .course-card:hover { border-color: var(--end-accent); background: var(--petrol-soft, #e3f0f2); color: var(--end-ink); }
+.reveal .s-encerramento .course-card:focus-visible { outline: 3px solid var(--end-accent); outline-offset: 4px; }
+.s-encerramento .course-card strong { color: var(--end-accent); font: 680 25px/1.2 var(--font); overflow-wrap: anywhere; }
+.s-encerramento .course-card .course-description { color: var(--end-muted); font: 400 18px/1.5 var(--font); }
+.s-encerramento .course-card .course-open { margin-top: auto; padding-top: 12px; color: var(--end-accent); font: 650 15px/1.4 var(--font); }
+.reveal .s-encerramento .end-credit { margin: 0 0 22px; color: var(--end-muted); font: 400 17px/1.5 var(--font); }
+.s-encerramento .end-credit strong { color: var(--end-ink); }
+.s-encerramento .author-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px 28px; margin: 0; padding-top: 18px; border-top: 1px solid var(--end-line); background: transparent; color: var(--end-muted); }
+.s-encerramento .author-footer-copy { flex: 1 1 650px; }
+.s-encerramento .author-footer p { margin: 0; font: 400 14px/1.5 var(--font); color: var(--end-muted); }
+.s-encerramento .author-footer .author-copyright { color: var(--end-ink); font-weight: 650; }
+.s-encerramento .author-footer .author-nature { margin-top: 6px !important; }
+.s-encerramento .author-rights-button { flex: none; }
+body.modo-estudo .s-encerramento .course-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  body.modo-estudo .s-encerramento .course-grid { grid-template-columns: 1fr; gap: 16px; }
+  body.modo-estudo .s-encerramento .course-card { min-height: 180px; padding: 22px; }
+  body.modo-estudo .s-encerramento .slide-head h2 { font-size: 30px; }
+  body.modo-estudo .s-encerramento .end-intro { font-size: 18px; }
+  body.modo-estudo .s-encerramento .author-footer-copy { flex-basis: 100%; }
+}
+@media print { .s-encerramento .course-card { break-inside: avoid; } }
