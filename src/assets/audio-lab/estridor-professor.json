@@ -1,10 +1,10 @@
 {
-  "titulo": "Estridor — arquivo selecionado pelo professor",
-  "origem": "Estridor.mp3 fornecido pelo professor para substituir a síntese",
+  "titulo": "Estridor",
+  "origem": "Som sintetizado pelo autor para fins didáticos.",
   "sha256_original": "8f9c2c98b036dea6ddf5d087cdf8ac5d34bd3ac1b0a127dafd2f406bc853478d",
   "arquivo_publicado": "estridor-professor.mp3",
   "modificacoes_no_arquivo": "Nenhuma; cópia byte a byte do MP3 fornecido",
   "reproducao": "Integral em velocidade original; decodificação Web Audio e média dos canais para mono em memória; taxa de amostragem conforme AudioContext",
   "fase_respiratoria": "Não anotada; sem alinhamento artificial com o modelo",
-  "autoria_original": "Não informada; não se atribui autoria ou licença SPRSound a este arquivo"
+  "autoria_original": "João Frederico Musial"
 }

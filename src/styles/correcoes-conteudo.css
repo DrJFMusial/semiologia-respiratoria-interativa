@@ -1,0 +1,26 @@
+.capa-encontro { margin: -10px 0 20px; color: var(--ink-3); font: 550 15px/1.4 var(--font); }
+.s-capa .capa-author { margin: 22px 0 24px; }
+.s-capa .capa-sub { margin-bottom: 0; }
+.reveal .slides > section { min-width: 0; }
+.reveal .fill, .sd-left, .sd-right, .as-panel { min-width: 0; }
+body.modo-estudo .sd-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+body.modo-estudo .sd-tab { min-width: 1000px; }
+body.modo-estudo .sindromes { min-width: 0; max-width: 100%; }
+body.modo-estudo .sd-right { min-width: 0; max-width: 100%; overflow: hidden; }
+.sons-aviso { margin: 0 0 14px !important; padding: 10px 14px; border-left: 3px solid var(--petrol); background: var(--paper-2); font: 450 15px/1.45 var(--font); color: var(--ink-2); }
+.s-normais:has(.sons-aviso) .normais-grid { height: calc(100% - var(--head) - 75px); }
+body.modo-estudo .s-normais:has(.sons-aviso) .normais-grid { height: auto; }
+.as-panel { overflow-y: auto; padding-right: 8px; padding-bottom: 12px; scrollbar-gutter: stable; }
+.as-ev { flex-shrink: 0; max-width: 100%; }
+.as-ev[open] { padding-bottom: 12px; }
+.as-ev p { overflow-wrap: anywhere; }
+body.modo-estudo .as-panel { overflow: visible; }
+
+/* Controles acessíveis também em apresentação a 390 px. */
+@media(max-width:720px){
+ .appbar{max-width:calc(100% - 16px);padding:6px 8px;gap:0}
+ body.modo-estudo .appbar{max-width:100%;padding:6px 8px}
+ .appbar .ab-left{display:none}.appbar .ab-right{min-width:0;flex-wrap:wrap;gap:2px}
+ .appbar .ab-right .btn span,.appbar .ab-vol input{display:none}
+ .appbar .ab-right .btn{padding-inline:6px}.appbar .ab-vol{gap:0}
+}

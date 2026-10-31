@@ -1,7 +1,7 @@
 /**
  * Construtor de registro do exame do tórax: cada linha do prontuário tem
  * opções; o texto final segue a ordem do exame e o que difere do normal
- * fica destacado. Atalhos: "Exame normal" e "Caso didático".
+ * fica destacado. Atalhos: "Exame normal" e "Caso clínico".
  */
 import { button } from '../core/ui.js';
 
@@ -88,7 +88,7 @@ export function registro(node) {
     check.innerHTML = c.length ? `<div class="fb no">${c.map((x) => `<p>${x}</p>`).join('')}</div>` : '';
   }
   const pr = node.querySelector('.rg-presets');
-  [['normal', 'Exame normal'], ['paulo', 'Caso didático']].forEach(([k, l]) => {
+  [['normal', 'Exame normal'], ['paulo', 'Caso clínico']].forEach(([k, l]) => {
     const b = button({ label: `Preencher: ${l}`, text: l, cls: 'ghost' });
     b.addEventListener('click', () => { Object.assign(st, PRESETS[k]); render(); });
     pr.appendChild(b);

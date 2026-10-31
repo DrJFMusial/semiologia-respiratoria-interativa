@@ -46,7 +46,7 @@ export function descritor(node) {
     rows.appendChild(r);
   }
   const pre = node.querySelector('.ds-pre');
-  [['Caso do Caso didático', PRESET], ['Crise de asma', { tipo: 'sibilos', fase: 'exp', regiao: 'difuso', face: 'post', lado: 'bi', tosse: 'nt' }]].forEach(([l, p]) => {
+  [['Caso clínico', PRESET], ['Crise de asma', { tipo: 'sibilos', fase: 'exp', regiao: 'difuso', face: 'post', lado: 'bi', tosse: 'nt' }]].forEach(([l, p]) => {
     const b = button({ label: `Preencher: ${l}`, text: l, cls: 'ghost' });
     b.addEventListener('click', () => { Object.assign(st, p); render(); });
     pre.appendChild(b);

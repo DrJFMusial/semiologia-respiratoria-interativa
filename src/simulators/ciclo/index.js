@@ -175,7 +175,7 @@ export function cicloResp(node) {
     detail.innerHTML = `<p><b>${ach.nome}.</b> ${ach.texto || pontoTxt}</p>${ach.soBase && ponto === 'traqueia' ? '<p class="cr-warn">Este achado é definido pela base: na traqueia esse padrão é o normal.</p>' : ''}
       ${achado === 'estridor' && ponto === 'base' ? '<p class="cr-warn">O estridor nasce na via aérea alta: compare com o ponto traqueia, onde é mais intenso.</p>' : ''}`;
     if (achado === 'estridor') {
-      detail.innerHTML = '<p><b>Estridor — arquivo selecionado pelo professor.</b> Reprodução integral em velocidade original. Não há marcação das fases respiratórias neste arquivo; volume, fluxo, FR e relação I:E não são inferidos do áudio. O mesmo arquivo é usado nas duas seleções de ponto.</p>';
+      detail.innerHTML = '<p><b>Estridor</b> Som sintetizado pelo autor para fins didáticos. Reprodução integral em velocidade original. Não há marcação das fases respiratórias neste arquivo; volume, fluxo, FR e relação I:E não são inferidos do áudio. O mesmo arquivo é usado nas duas seleções de ponto.</p>';
     }
     if (usesAuthor) detail.insertAdjacentHTML('beforeend', `<p class="cr-audio-note">Trecho de sibilo.mp3 (${authoredWheeze.start.toFixed(2)}–${authoredWheeze.end.toFixed(2)} s do arquivo de ${authoredWheeze.originalDuration.toFixed(1)} s), inserido na expiração do modelo em velocidade original. O ciclo é ilustrativo.</p>`);
     if (audioError) {

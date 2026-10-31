@@ -20,9 +20,9 @@ export function creditos(node) {
       <tbody>${rows}</tbody></table></div>
     <p><a href="./licencas/CREDITOS_E_LICENCAS.md" target="_blank" rel="noopener">Créditos completos</a> ·
     <a href="./licencas/LICENSE-SPRSound-CC-BY-4.0.txt" target="_blank" rel="noopener">Licença SPRSound</a> ·
-    <a href="./licencas/LICENSE-reveal-MIT.txt" target="_blank" rel="noopener">reveal.js — MIT</a> ·
-    <a href="./licencas/LICENSE-Inter-OFL.txt" target="_blank" rel="noopener">Inter — OFL</a> ·
-    <a href="./licencas/LICENSE-IBMPlexMono-OFL.txt" target="_blank" rel="noopener">IBM Plex Mono — OFL</a></p>`;
+    <a href="./licencas/LICENSE-reveal-MIT.txt" target="_blank" rel="noopener">reveal.js: MIT</a> ·
+    <a href="./licencas/LICENSE-Inter-OFL.txt" target="_blank" rel="noopener">Inter: OFL</a> ·
+    <a href="./licencas/LICENSE-IBMPlexMono-OFL.txt" target="_blank" rel="noopener">IBM Plex Mono: OFL</a></p>`;
   return {};
 }
 
